@@ -6,6 +6,10 @@ import Button from '../ui/Button'
 const ServiceCard = ({ service }) => {
     return (
         <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             whileHover={{ y: -8 }}
             className="bg-white rounded-[2rem] p-6 md:p-8 border border-rarity-navy/10 shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(15,23,42,0.1)] transition-all duration-500 flex flex-col h-full group relative overflow-hidden"
         >

@@ -15,39 +15,37 @@ const ServiceSection = ({ section, index }) => {
     return (
         <section
             id={section.id}
-            className="relative lg:sticky lg:top-0 min-h-auto lg:min-h-screen flex flex-col pt-4 lg:pt-8 transition-all duration-500 ease-out"
+            className="relative lg:sticky lg:top-0 min-h-auto lg:min-h-screen flex flex-col pt-0 transition-all duration-500 ease-out"
             style={{ zIndex: index + 10 }}
         >
-            <div className="bg-rarity-cream rounded-t-[2.5rem] md:rounded-t-[3.5rem] shadow-[0_-25px_50px_-12px_rgba(0,0,0,0.5)] flex-grow border-t border-white/20 relative overflow-hidden mx-2 md:mx-6">
+            <div className="bg-rarity-cream rounded-t-[2.5rem] md:rounded-t-[3.5rem] shadow-[0_-30px_60px_-15px_rgba(0,0,0,0.6)] flex-grow border-t border-white/20 relative mx-0 md:mx-6">
 
                 <div className="max-w-7xl mx-auto px-4 md:px-8 py-8 md:py-10">
-                    {/* Header Row: Title & Link */}
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end border-b border-rarity-navy/10 pb-4 mb-6 lg:mb-8">
-                        <div>
-                            <span className="text-rarity-gold font-montserrat text-xs tracking-[0.3em] uppercase mb-4 block font-bold">
-                                0{index + 1} — {section.category}
-                            </span>
-                            <h2 className="font-playfair text-5xl md:text-7xl text-rarity-ink leading-[0.9] tracking-tight">
-                                {section.category === 'Lash Sets' ? 'The Collection' : section.category}
-                            </h2>
-                        </div>
+                    {/* Category Title - Sticky on Mobile, Offset for navbar/banner */}
+                    <div className="sticky top-[92px] lg:top-0 z-40 bg-rarity-cream/95 backdrop-blur-md -mx-4 px-6 py-5 mb-8 border-b border-rarity-navy/5 lg:static lg:bg-transparent lg:backdrop-blur-none lg:p-0 lg:border-none lg:mx-0 lg:mb-12">
+                        <span className="text-rarity-gold font-montserrat text-[10px] tracking-[0.4em] uppercase mb-2 block font-bold">
+                            0{index + 1}
+                        </span>
+                        <h2 className="font-playfair text-3xl md:text-7xl text-rarity-ink leading-tight tracking-tight">
+                            {section.category === 'Lash Sets' ? 'The Collection' : section.category}
+                        </h2>
                     </div>
 
-                    <div className="flex flex-col lg:flex-row gap-6 lg:gap-10">
-                        {/* Left Column: Subtle Image & Context */}
-                        <div className="lg:w-1/3 flex flex-col">
-                            <div className="aspect-[4/6] rounded-2xl overflow-hidden shadow-lg border border-rarity-navy/5 group relative">
+                    <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
+                        {/* Left Column: Context Image */}
+                        <div className="lg:w-1/3">
+                            <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-rarity-navy/5 group relative max-h-[400px] lg:max-h-none">
                                 <img
                                     src={section.image}
                                     alt={section.category}
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
                                 />
-                                <div className="absolute inset-0 bg-rarity-ink/5 group-hover:bg-transparent transition-colors duration-500" />
+                                <div className="absolute inset-0 bg-rarity-ink/10 group-hover:bg-transparent transition-colors duration-700" />
                             </div>
                         </div>
 
                         {/* Right Column: Service Grid */}
-                        <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 content-start">
+                        <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 content-start pb-12">
                             {section.items.map((service, idx) => (
                                 <ServiceCard key={service.id} service={service} />
                             ))}

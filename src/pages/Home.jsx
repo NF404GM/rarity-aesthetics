@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import { IMAGES } from '../constants/images'
 import heroImage from '../assets/Hero_image_rarity.png'
 import ErrorBoundary from '../components/core/ErrorBoundary'
-import InstagramFeed from '../components/marketing/InstagramFeed'
+import SocialFeed from '../components/marketing/SocialFeed'
 import FloatingGallery from '../components/home/FloatingGallery'
 
 // Cloud Curtain Component for the Reveal Effect
@@ -269,7 +269,12 @@ const Home = () => {
                 <section ref={labRef} className="h-screen flex items-center relative overflow-hidden group">
                     <motion.div
                         className="absolute inset-0 bg-cover bg-center opacity-100"
-                        style={{ backgroundImage: `url(${IMAGES.home.shopTeaser})`, y: labY, scale: 1.1 }}
+                        style={{
+                            backgroundImage: `url(${IMAGES.home.shopTeaser})`,
+                            y: labY,
+                            scale: 1.1,
+                            backgroundPosition: 'center 20%' // Adjusting Y to ensure product visibility on mobile
+                        }}
                     />
                     {/* Reduced Gradient Overlay - Partial left tint only */}
                     <div className="absolute inset-0 bg-gradient-to-r from-rarity-navy/95 via-rarity-navy/50 to-transparent pointer-events-none" />
@@ -320,8 +325,8 @@ const Home = () => {
 
 
 
-                {/* Section 6: Instagram Feed */}
-                <InstagramFeed />
+                {/* Section 6: Social Feed */}
+                <SocialFeed />
             </div>
         </ErrorBoundary>
     )
