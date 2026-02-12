@@ -6,6 +6,7 @@ import PageTransition from './components/ui/PageTransition'
 import { HelmetProvider } from 'react-helmet-async'
 import { ShopProvider } from './context/ShopContext'
 import { initGA, logPageView } from './lib/analytics'
+import { Analytics } from '@vercel/analytics/react'
 
 // Lazy-loaded pages (code splitting)
 const Home = lazy(() => import('./pages/Home'))
@@ -76,6 +77,7 @@ function App() {
           <Layout>
             <AnimatedRoutes />
           </Layout>
+          <Analytics />
         </Router>
       </ShopProvider>
     </HelmetProvider>
