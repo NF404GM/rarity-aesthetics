@@ -9,8 +9,6 @@ const TIME_SLOTS = {
 const StepTime = ({ selectedTime, onSelect }) => {
     return (
         <div className="space-y-8">
-            <h2 className="font-playfair text-3xl text-rarity-ink mb-6">Select Time</h2>
-
             {Object.entries(TIME_SLOTS).map(([period, times]) => (
                 <div key={period}>
                     <h3 className="font-montserrat text-xs uppercase tracking-widest text-gray-400 mb-4">{period}</h3>

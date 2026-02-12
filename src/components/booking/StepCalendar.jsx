@@ -21,17 +21,17 @@ const StepCalendar = ({ selectedDate, onSelect }) => {
 
     const renderHeader = () => {
         return (
-            <div className="flex justify-between items-center mb-8 px-2">
+            <div className="flex justify-between items-center mb-6 px-2">
                 <button
                     onClick={prevMonth}
                     disabled={isSameMonth(currentMonth, today)}
-                    className="p-2 hover:bg-gray-100 rounded-full disabled:opacity-20 disabled:hover:bg-transparent transition-colors"
+                    className="p-1.5 hover:bg-gray-100 rounded-full disabled:opacity-20 disabled:hover:bg-transparent transition-colors"
                 >
-                    <ChevronLeft className="w-6 h-6 text-rarity-ink" />
+                    <ChevronLeft className="w-5 h-5 text-rarity-ink" />
                 </button>
 
                 <div className="flex flex-col items-center">
-                    <h2 className="font-playfair text-2xl text-rarity-ink">
+                    <h2 className="font-playfair text-xl text-rarity-ink">
                         {format(currentMonth, 'MMMM')}
                     </h2>
                     {/* Year Dropdown */}
@@ -39,7 +39,7 @@ const StepCalendar = ({ selectedDate, onSelect }) => {
                         <select
                             value={currentMonth.getFullYear()}
                             onChange={handleYearChange}
-                            className="appearance-none bg-transparent font-montserrat text-xs tracking-[0.2em] text-rarity-gold uppercase cursor-pointer outline-none border-b border-transparent hover:border-rarity-gold transition-colors pr-4 text-center"
+                            className="appearance-none bg-transparent font-montserrat text-[10px] tracking-[0.2em] text-rarity-gold uppercase cursor-pointer outline-none border-b border-transparent hover:border-rarity-gold transition-colors pr-4 text-center"
                         >
                             {years.map(year => (
                                 <option key={year} value={year}>{year}</option>
@@ -49,8 +49,8 @@ const StepCalendar = ({ selectedDate, onSelect }) => {
                     </div>
                 </div>
 
-                <button onClick={nextMonth} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
-                    <ChevronRight className="w-6 h-6 text-rarity-ink" />
+                <button onClick={nextMonth} className="p-1.5 hover:bg-gray-100 rounded-full transition-colors">
+                    <ChevronRight className="w-5 h-5 text-rarity-ink" />
                 </button>
             </div>
         )
@@ -59,9 +59,9 @@ const StepCalendar = ({ selectedDate, onSelect }) => {
     const renderDays = () => {
         const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
         return (
-            <div className="grid grid-cols-7 mb-4">
+            <div className="grid grid-cols-7 mb-2">
                 {days.map(day => (
-                    <div key={day} className="text-center font-montserrat text-xs tracking-widest text-gray-400 uppercase">
+                    <div key={day} className="text-center font-montserrat text-[10px] tracking-widest text-gray-400 uppercase">
                         {day}
                     </div>
                 ))}
@@ -89,7 +89,7 @@ const StepCalendar = ({ selectedDate, onSelect }) => {
                 days.push(
                     <div
                         key={day}
-                        className={`relative h-11 md:h-14 border border-transparent rounded-xl flex items-center justify-center cursor-pointer transition-all duration-200
+                        className={`relative h-10 md:h-12 border border-transparent rounded-xl flex items-center justify-center cursor-pointer transition-all duration-200
                             ${!isSameMonth(day, monthStart) ? 'text-gray-200' : isDisabled ? 'text-gray-300 cursor-not-allowed' : 'text-rarity-ink hover:bg-white hover:shadow-md'}
                             ${isSameDay(day, selectedDate) ? 'bg-rarity-ink text-white shadow-lg hover:bg-rarity-ink hover:text-white' : ''}
                         `}
@@ -104,17 +104,17 @@ const StepCalendar = ({ selectedDate, onSelect }) => {
                 day = addDays(day, 1)
             }
             rows.push(
-                <div key={day} className="grid grid-cols-7 gap-2">
+                <div key={day} className="grid grid-cols-7 gap-1">
                     {days}
                 </div>
             )
             days = []
         }
-        return <div className="space-y-2">{rows}</div>
+        return <div className="space-y-1">{rows}</div>
     }
 
     return (
-        <div className="bg-white/50 backdrop-blur-sm p-3 md:p-6 rounded-2xl md:rounded-3xl border border-white/40">
+        <div className="bg-white/50 backdrop-blur-sm p-4 md:p-5 rounded-2xl md:rounded-3xl border border-white/40">
             {renderHeader()}
             {renderDays()}
             {renderCells()}

@@ -10,8 +10,6 @@ const StepForm = ({ formData, onChange, onComplete }) => {
 
     return (
         <div className="space-y-6">
-            <h2 className="font-playfair text-3xl text-rarity-ink mb-6">Your Details</h2>
-
             <div className="space-y-4">
                 <input
                     type="text"
