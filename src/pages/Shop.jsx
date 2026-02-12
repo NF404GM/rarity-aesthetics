@@ -7,6 +7,7 @@ import SEO from '../components/core/SEO'
 import ProductModal from '../components/shop/ProductModal'
 import { Plus, ShoppingBag, Sparkles, ArrowRight } from 'lucide-react'
 import shopBanner from '../assets/Shop_banner_image.png'
+import RecentlyViewed, { addToRecentlyViewed } from '../components/shop/RecentlyViewed'
 
 const categories = ['All', 'Collections', 'Adhesives', 'Tools', 'Accessories', 'Apparel']
 
@@ -26,6 +27,7 @@ const Shop = () => {
     const handleProductClick = (product) => {
         setSelectedProduct(product)
         setIsModalOpen(true)
+        addToRecentlyViewed(product.id)
     }
 
     const handleQuickAdd = (e, product) => {
@@ -195,6 +197,9 @@ const Shop = () => {
                         </motion.div>
                     ))}
                 </div>
+
+                {/* Recently Viewed Strip */}
+                <RecentlyViewed />
             </div>
 
             {/* Product Modal */}

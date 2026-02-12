@@ -1,54 +1,73 @@
-import { useEffect, useState } from 'react'
-import { motion, useMotionValue, useSpring } from 'framer-motion'
+import { useRef, useEffect, useState } from 'react'
+import { motion, useSpring, useMotionValue } from 'framer-motion'
+import { Sparkles } from 'lucide-react'
 
-const Cursor = () => {
-    const [isHovered, setIsHovered] = useState(false)
+const SparkleCursor = () => {
     const cursorX = useMotionValue(-100)
     const cursorY = useMotionValue(-100)
+    const [isHovering, setIsHovering] = useState(false)
+    const [isVisible, setIsVisible] = useState(false)
 
-    const springConfig = { damping: 25, stiffness: 700 }
-    const cursorXSpring = useSpring(cursorX, springConfig)
-    const cursorYSpring = useSpring(cursorY, springConfig)
+    // Smooth spring physics for lag-free but organic movement
+    const springConfig = { damping: 20, stiffness: 400, mass: 0.5 }
+    const springX = useSpring(cursorX, springConfig)
+    const springY = useSpring(cursorY, springConfig)
 
     useEffect(() => {
         const moveCursor = (e) => {
-            cursorX.set(e.clientX - 16)
-            cursorY.set(e.clientY - 16)
+            cursorX.set(e.clientX)
+            cursorY.set(e.clientY)
+            if (!isVisible) setIsVisible(true)
         }
 
         const handleMouseOver = (e) => {
             if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a') || e.target.closest('button')) {
-                setIsHovered(true)
+                setIsHovering(true)
             } else {
-                setIsHovered(false)
+                setIsHovering(false)
             }
         }
 
+        const handleMouseLeave = () => setIsVisible(false)
+        const handleMouseEnter = () => setIsVisible(true)
+
         window.addEventListener('mousemove', moveCursor)
         window.addEventListener('mouseover', handleMouseOver)
+        document.body.addEventListener('mouseleave', handleMouseLeave)
+        document.body.addEventListener('mouseenter', handleMouseEnter)
 
         return () => {
             window.removeEventListener('mousemove', moveCursor)
             window.removeEventListener('mouseover', handleMouseOver)
+            document.body.removeEventListener('mouseleave', handleMouseLeave)
+            document.body.removeEventListener('mouseenter', handleMouseEnter)
         }
-    }, [cursorX, cursorY])
+    }, [cursorX, cursorY, isVisible])
 
     return (
         <motion.div
-            className="fixed top-0 left-0 w-8 h-8 rounded-full border border-rarity-gold pointer-events-none z-[9999] mix-blend-difference hidden md:block"
+            className="fixed top-0 left-0 pointer-events-none z-[9999] text-rarity-gold hidden md:block"
             style={{
-                translateX: cursorXSpring,
-                translateY: cursorYSpring,
+                x: springX,
+                y: springY,
+                translateX: '-50%',
+                translateY: '-50%',
             }}
-            animate={{
-                scale: isHovered ? 2.5 : 1,
-                backgroundColor: isHovered ? 'rgba(212, 175, 55, 0.1)' : 'transparent',
-            }}
-            transition={{ duration: 0.2 }}
         >
-            <div className="absolute top-1/2 left-1/2 w-1 h-1 bg-rarity-gold rounded-full -translate-x-1/2 -translate-y-1/2" />
+            <motion.div
+                animate={{
+                    scale: isHovering ? 2 : 1,
+                    rotate: isHovering ? 180 : 0,
+                }}
+                transition={{ duration: 0.3 }}
+            >
+                <Sparkles
+                    className="w-8 h-8 fill-current drop-shadow-[0_0_8px_rgba(212,175,55,0.8)]"
+                    strokeWidth={1.5}
+                />
+            </motion.div>
         </motion.div>
     )
 }
 
-export default Cursor
+export default SparkleCursor

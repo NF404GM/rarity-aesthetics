@@ -92,7 +92,7 @@ const Header = () => {
 
                 {/* Right Navigation */}
                 <nav className="flex items-center gap-12 w-1/3 justify-end">
-                    {['Shop', 'Book'].map((item) => (
+                    {['Shop', 'Book', 'Blog'].map((item) => (
                         <Link
                             key={item}
                             to={`/${item.toLowerCase()}`}
@@ -123,17 +123,14 @@ const Header = () => {
             </motion.header>
 
             {/* Mobile Header (Minimal) */}
-            <header className={`fixed top-8 left-0 right-0 px-4 py-3 flex justify-between items-center z-50 md:hidden text-rarity-ink transition-all duration-300 ${isScrolled ? 'bg-rarity-navy/80 backdrop-blur-md shadow-lg' : ''}`}>
-                <Link to="/" className="w-10 h-10">
-                    <img src={logo} alt="Rarity" className="w-full h-full object-contain" />
+            <header className={`fixed top-8 left-0 right-0 px-4 py-2 flex justify-between items-center z-50 md:hidden text-rarity-ink transition-all duration-300 ${isHidden ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'} ${isScrolled ? 'bg-rarity-navy/80 backdrop-blur-md shadow-lg' : ''}`}>
+                <Link to="/" className="w-32 h-12 flex-shrink-0 flex items-center">
+                    <img src={logo} alt="Rarity" className="w-full h-full object-contain object-left" />
                 </Link>
-                <div className="flex items-center gap-3">
-                    <button onClick={() => setIsCartOpen(true)} aria-label="Open shopping cart" className="relative">
-                        <ShoppingBag className="w-5 h-5 text-rarity-ink" />
+                <div className="flex items-center gap-4">
+                    <button onClick={() => setIsCartOpen(true)} aria-label="Open shopping cart" className="relative flex items-center justify-center">
+                        <ShoppingBag className="w-6 h-6 text-rarity-ink" />
                         {cartCount > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-rarity-gold rounded-full" />}
-                    </button>
-                    <button onClick={() => setIsOpen(true)} aria-label="Open menu">
-                        <Menu className="w-7 h-7 text-white" />
                     </button>
                 </div>
             </header>

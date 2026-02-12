@@ -3,35 +3,63 @@ import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/core/SEO'
 import { IMAGES } from '../constants/images'
 import { Star, Award, Heart } from 'lucide-react'
+import TextReveal from '../components/ui/TextReveal'
+import TiltCard from '../components/ui/TiltCard'
 
 const About = () => {
     const [activeChapter, setActiveChapter] = useState('artist')
 
     const chapters = [
-        { id: 'artist', label: 'The Artist', icon: UserIcon },
+        { id: 'artist', label: 'The Artist', icon: null },
         { id: 'philosophy', label: 'The Philosophy', icon: Heart },
         { id: 'craft', label: 'The Craft', icon: Award },
+        { id: 'credentials', label: 'Credentials', icon: Star },
     ]
+
+    const artistSchema = {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ashley",
+        "jobTitle": "Master Lash Artist & Licensed Esthetician",
+        "image": "https://rarityaesthetics.com/assets/ashley-portrait.jpg",
+        "url": "https://rarityaesthetics.com/about",
+        "worksFor": {
+            "@type": "BeautySalon",
+            "name": "Rarity Aesthetics"
+        },
+        "sameAs": [
+            "https://www.instagram.com/therarityaesthetics"
+        ]
+    }
 
     return (
         <div className="bg-rarity-navy min-h-screen flex flex-col md:flex-row overflow-hidden relative">
-            <SEO title="About Ashley | Rarity Aesthetics" description="Meet Ashley, a Master Lash Artist and Licensed Esthetician specializing in natural health and volume styling in Thornton, CO." canonical="/about" />
+            <div className="fixed inset-0 pointer-events-none z-[1] opacity-[0.03] mix-blend-overlay" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
+
+            <SEO
+                title="About Ashley | Rarity Aesthetics"
+                description="Meet Ashley, a Master Lash Artist and Licensed Esthetician specializing in natural health and volume styling in Thornton, CO."
+                canonical="/about"
+                schema={artistSchema}
+            />
 
             {/* LEFT PANEL - Fixed Image (The Anchor) */}
-            <div className="w-full md:w-1/2 h-[50vh] md:h-screen relative overflow-hidden group flex items-center justify-center bg-rarity-navy">
+            <div className="w-full md:w-1/2 h-[50vh] md:h-screen relative overflow-hidden group flex items-center justify-center bg-rarity-navy z-10">
                 {/* Decor: Subtle Glow behind circle */}
                 <div className="absolute w-[500px] h-[500px] bg-rarity-gold/5 rounded-full blur-3xl" />
 
-                <div className="relative w-64 h-64 md:w-[450px] md:h-[450px] rounded-full overflow-hidden border-4 border-white/20 shadow-2xl z-20">
-                    <motion.img
-                        initial={{ scale: 1.1, filter: "grayscale(100%)" }}
-                        animate={{ scale: 1, filter: "grayscale(0%)" }}
-                        transition={{ duration: 1.5 }}
-                        src={IMAGES.about.portrait}
-                        alt="Ashley - Master Lash Artist"
-                        className="w-full h-full object-cover object-top"
-                    />
-                </div>
+                <TiltCard className="relative w-64 h-64 md:w-[450px] md:h-[450px] rounded-full">
+                    <div className="w-full h-full rounded-full overflow-hidden border-4 border-white/20 shadow-2xl">
+                        <motion.img
+                            initial={{ scale: 1.1, filter: "grayscale(100%)" }}
+                            animate={{ scale: 1, filter: "grayscale(0%)" }}
+                            transition={{ duration: 1.5 }}
+                            src={IMAGES.about.portrait}
+                            alt="Ashley - Master Lash Artist"
+                            className="w-full h-full object-cover object-top"
+                        />
+                    </div>
+                </TiltCard>
 
                 {/* Mobile Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-rarity-navy via-transparent to-transparent md:hidden z-20 pointer-events-none" />
@@ -73,9 +101,11 @@ const About = () => {
                                 transition={{ duration: 0.5 }}
                                 className="space-y-6"
                             >
-                                <h1 className="font-playfair text-4xl md:text-6xl lg:text-7xl text-rarity-ink italic mb-2">
-                                    Ashley.
-                                </h1>
+                                <div className="mb-2">
+                                    <TextReveal className="font-playfair text-4xl md:text-6xl lg:text-7xl text-rarity-ink italic">
+                                        Ashley.
+                                    </TextReveal>
+                                </div>
                                 <p className="font-lato text-rarity-ink/80 text-lg leading-relaxed max-w-md">
                                     "I don't just apply lashes; I design confidence. My studio is a sanctuary where precision meets artistry, and where you are the muse."
                                 </p>
@@ -92,13 +122,65 @@ const About = () => {
                                 transition={{ duration: 0.5 }}
                                 className="space-y-8"
                             >
-                                <h2 className="font-playfair text-4xl text-rarity-ink">Invisible Luxury.</h2>
+                                <div className="mb-8">
+                                    <TextReveal className="font-playfair text-4xl text-rarity-ink">
+                                        Invisible Luxury.
+                                    </TextReveal>
+                                </div>
                                 <blockquote className="font-playfair text-2xl text-rarity-ink/90 italic border-l-2 border-rarity-gold pl-6 py-2">
                                     "My work is not about changing how you look. It's about revealing who you are."
                                 </blockquote>
                                 <p className="font-lato text-rarity-ink/80 text-lg leading-relaxed">
                                     Every set is a collaboration—a study of your bone structure, your style, and your daily life. True luxury feels weightless and looks effortless.
                                 </p>
+                            </motion.div>
+                        )}
+
+                        {activeChapter === 'credentials' && (
+                            <motion.div
+                                key="credentials"
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -20 }}
+                                transition={{ duration: 0.5 }}
+                                className="space-y-8"
+                            >
+                                <h2 className="font-playfair text-4xl text-rarity-ink">Certified Excellence.</h2>
+                                <p className="font-lato text-rarity-ink/80 text-lg leading-relaxed mb-6">
+                                    Continuous education is the hallmark of a master. I am committed to staying at the forefront of the industry with advanced certifications.
+                                </p>
+
+                                <div className="grid grid-cols-1 gap-6">
+                                    <div className="flex items-center gap-4 p-4 bg-white/50 border border-rarity-ink/5 rounded-xl">
+                                        <div className="w-12 h-12 bg-rarity-gold/10 rounded-full flex items-center justify-center text-rarity-gold">
+                                            <Award className="w-6 h-6" />
+                                        </div>
+                                        <div>
+                                            <h3 className="font-playfair text-xl text-rarity-ink">Licensed Esthetician</h3>
+                                            <p className="text-xs font-montserrat uppercase tracking-wider text-rarity-ink/60">State of Colorado</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center gap-4 p-4 bg-white/50 border border-rarity-ink/5 rounded-xl">
+                                        <div className="w-12 h-12 bg-rarity-gold/10 rounded-full flex items-center justify-center text-rarity-gold">
+                                            <Star className="w-6 h-6" />
+                                        </div>
+                                        <div>
+                                            <h3 className="font-playfair text-xl text-rarity-ink">Master Lash Artist</h3>
+                                            <p className="text-xs font-montserrat uppercase tracking-wider text-rarity-ink/60">4x Certified (Volume, Mega Volume, Styling)</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center gap-4 p-4 bg-white/50 border border-rarity-ink/5 rounded-xl">
+                                        <div className="w-12 h-12 bg-rarity-gold/10 rounded-full flex items-center justify-center text-rarity-gold">
+                                            <Heart className="w-6 h-6" />
+                                        </div>
+                                        <div>
+                                            <h3 className="font-playfair text-xl text-rarity-ink">Sanitation & Safety</h3>
+                                            <p className="text-xs font-montserrat uppercase tracking-wider text-rarity-ink/60">Barbicide Certified</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </motion.div>
                         )}
 

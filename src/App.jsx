@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { lazy, Suspense, useEffect } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import Layout from './components/layout/Layout'
+import PageTransition from './components/ui/PageTransition'
 import { HelmetProvider } from 'react-helmet-async'
 import { ShopProvider } from './context/ShopContext'
 import { initGA, logPageView } from './lib/analytics'
@@ -17,6 +19,7 @@ const Book = lazy(() => import('./pages/Book'))
 const Shop = lazy(() => import('./pages/Shop'))
 const ProductDetail = lazy(() => import('./pages/ProductDetail'))
 const Cart = lazy(() => import('./pages/Cart'))
+const Blog = lazy(() => import('./pages/Blog'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 // Branded loading fallback
@@ -36,6 +39,32 @@ function PageViewTracker() {
   return null
 }
 
+// Animated routes wrapper
+function AnimatedRoutes() {
+  const location = useLocation()
+  return (
+    <AnimatePresence mode="wait">
+      <Suspense fallback={<PageLoader />} key={location.pathname}>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+          <Route path="/services" element={<PageTransition><Services /></PageTransition>} />
+          <Route path="/services/:id" element={<PageTransition><ServiceDetail /></PageTransition>} />
+          <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+          <Route path="/portfolio" element={<PageTransition><Portfolio /></PageTransition>} />
+          <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+          <Route path="/faq" element={<PageTransition><FAQ /></PageTransition>} />
+          <Route path="/book" element={<PageTransition><Book /></PageTransition>} />
+          <Route path="/shop" element={<PageTransition><Shop /></PageTransition>} />
+          <Route path="/shop/:id" element={<PageTransition><ProductDetail /></PageTransition>} />
+          <Route path="/cart" element={<PageTransition><Cart /></PageTransition>} />
+          <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
+          <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+        </Routes>
+      </Suspense>
+    </AnimatePresence>
+  )
+}
+
 function App() {
   useEffect(() => { initGA() }, [])
 
@@ -45,22 +74,7 @@ function App() {
         <Router>
           <PageViewTracker />
           <Layout>
-            <Suspense fallback={<PageLoader />}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/services/:id" element={<ServiceDetail />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/portfolio" element={<Portfolio />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/faq" element={<FAQ />} />
-                <Route path="/book" element={<Book />} />
-                <Route path="/shop" element={<Shop />} />
-                <Route path="/shop/:id" element={<ProductDetail />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
+            <AnimatedRoutes />
           </Layout>
         </Router>
       </ShopProvider>
@@ -69,4 +83,3 @@ function App() {
 }
 
 export default App
-

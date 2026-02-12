@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap');
+/* Fonts loaded via <link> in index.html for faster non-blocking load */
 
 @tailwind base;
 @tailwind components;
@@ -42,5 +42,19 @@
 
   .glass-dark {
     @apply bg-rarity-navy/80 backdrop-blur-xl border border-white/5;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .mask-gradient-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
   }
 }

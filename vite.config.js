@@ -8,8 +8,16 @@ export default defineConfig({
   resolve: {
     alias: {
       react: path.resolve('./node_modules/react'),
-      'react-dom': path.resolve('./node_modules/react-dom')
+      'react-dom': path.resolve('./node_modules/react-dom'),
+      '@': path.resolve(__dirname, './src'),
     },
-    dedupe: ['react', 'react-dom']
-  }
+  },
+  server: {
+    host: true, // Listen on all addresses
+    port: 5173,
+    watch: {
+      usePolling: true,
+    }
+  },
+  // Force restart trigger 8
 })

@@ -35,7 +35,7 @@ export const IMAGES = {
         lift: "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?q=80&w=2070&auto=format&fit=crop",
     },
     about: {
-        portrait: new URL('../assets/Ashley.jpg', import.meta.url).href,
+        portrait: new URL('../assets/Ashley_updated.png', import.meta.url).href,
     },
     portfolio: [
         { id: 1, category: 'Natural', src: new URL('../assets/portfolio/natural-closeup.png', import.meta.url).href },
@@ -45,6 +45,9 @@ export const IMAGES = {
         { id: 5, category: 'Fox Eye', src: new URL('../assets/portfolio/fox-eye.png', import.meta.url).href },
         { id: 6, category: 'Lash Nap', src: new URL('../assets/portfolio/lash-nap.png', import.meta.url).href }
     ],
+    blog: {
+        fullSet: new URL('../assets/blog/Lash_Full_Set.png', import.meta.url).href,
+    },
     products: {
         matteDreams: new URL('../assets/products/matte_dreams_collection.png', import.meta.url).href,
 

@@ -2,12 +2,13 @@ import { useRef, useState, useEffect } from 'react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { ArrowRight, Star, Heart } from 'lucide-react'
 import Button from '../components/ui/Button'
+import ScrollReveal from '../components/ui/ScrollReveal'
 import SEO from '../components/core/SEO'
 import { Link } from 'react-router-dom'
 import { IMAGES } from '../constants/images'
 import heroImage from '../assets/Hero_image_rarity.png'
 import ErrorBoundary from '../components/core/ErrorBoundary'
-import SocialFeed from '../components/marketing/SocialFeed'
+import InstagramFeed from '../components/marketing/InstagramFeed'
 import FloatingGallery from '../components/home/FloatingGallery'
 
 // Cloud Curtain Component for the Reveal Effect
@@ -113,10 +114,22 @@ const ServiceSection = ({ title, img, index, link, subtitle }) => {
 
 const Home = () => {
     const containerRef = useRef(null)
+    const heroRef = useRef(null)
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end end"]
     })
+    // Hero parallax: background moves at 0.5x scroll rate
+    const { scrollY } = useScroll()
+    const heroY = useTransform(scrollY, [0, 800], [0, 200])
+
+    // Lab parallax: moves slower than scroll
+    const labRef = useRef(null)
+    const { scrollYProgress: labScrollY } = useScroll({
+        target: labRef,
+        offset: ["start end", "end start"]
+    })
+    const labY = useTransform(labScrollY, [0, 1], [-100, 100])
 
     const businessSchema = {
         "@context": "https://schema.org",
@@ -147,6 +160,7 @@ const Home = () => {
         "url": "https://rarityaesthetics.com",
         "telephone": "+17205550123", // Value to be updated
         "priceRange": "$$",
+        "hasMap": "https://maps.app.goo.gl/YourMapLinkHere",
         "openingHoursSpecification": [
             {
                 "@type": "OpeningHoursSpecification",
@@ -173,15 +187,15 @@ const Home = () => {
 
                 {/* Section 1: Hero */}
                 <section className="relative h-screen flex items-center justify-center overflow-hidden bg-rarity-navy">
-                    {/* Background Image */}
-                    <div className="absolute inset-0 z-0">
+                    {/* Background Image with Parallax */}
+                    <motion.div className="absolute inset-0 z-0" style={{ y: heroY }}>
                         <img
                             src={heroImage}
                             alt="Natural Artistry Background"
-                            className="w-full h-full object-cover opacity-80"
+                            className="w-full h-[120%] object-cover opacity-80"
                         />
                         <div className="absolute inset-0 bg-gradient-to-b from-rarity-navy/30 via-transparent to-rarity-navy/90" />
-                    </div>
+                    </motion.div>
 
                     <div className="relative z-10 text-center px-6">
                         <motion.div
@@ -228,7 +242,7 @@ const Home = () => {
                 </section>
 
                 {/* Section 2: Kinetic Manifesto - Compacted */}
-                <section className="py-20 px-6 relative overflow-hidden bg-white/50 backdrop-blur-sm border-b border-rarity-ink/5">
+                <ScrollReveal variant="fade-up" as="section" className="py-20 px-6 relative overflow-hidden bg-white/50 backdrop-blur-sm border-b border-rarity-ink/5">
                     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-multiply"></div>
 
                     <div className="max-w-5xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-12">
@@ -249,11 +263,14 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                </section>
+                </ScrollReveal>
 
                 {/* Section 3: The Lab */}
-                <section className="h-screen flex items-center relative overflow-hidden group">
-                    <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[2000ms] group-hover:scale-110 opacity-100" style={{ backgroundImage: `url(${IMAGES.home.shopTeaser})` }} />
+                <section ref={labRef} className="h-screen flex items-center relative overflow-hidden group">
+                    <motion.div
+                        className="absolute inset-0 bg-cover bg-center opacity-100"
+                        style={{ backgroundImage: `url(${IMAGES.home.shopTeaser})`, y: labY, scale: 1.1 }}
+                    />
                     {/* Reduced Gradient Overlay - Partial left tint only */}
                     <div className="absolute inset-0 bg-gradient-to-r from-rarity-navy/95 via-rarity-navy/50 to-transparent pointer-events-none" />
 
@@ -274,7 +291,7 @@ const Home = () => {
                 </section>
 
                 {/* Section 3: Specials Teaser (Hearts Animation) */}
-                <section className="py-20 px-6 bg-rarity-ink relative overflow-hidden">
+                <ScrollReveal variant="fade-up" as="section" className="py-20 px-6 bg-rarity-ink relative overflow-hidden">
                     {/* Floating Hearts Container */}
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
                         {[...Array(15)].map((_, i) => (
@@ -296,15 +313,15 @@ const Home = () => {
                             Claim Offer
                         </Button>
                     </div>
-                </section>
+                </ScrollReveal>
 
                 {/* Section 2: Services - "Deconstructed" Floating Gallery */}
                 <FloatingGallery />
 
 
 
-                {/* Section 6: Social Feed */}
-                <SocialFeed />
+                {/* Section 6: Instagram Feed */}
+                <InstagramFeed />
             </div>
         </ErrorBoundary>
     )
