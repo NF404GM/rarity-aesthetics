@@ -123,17 +123,17 @@ const Header = () => {
             </motion.header>
 
             {/* Mobile Header (Minimal) */}
-            <header className="fixed top-0 left-0 right-0 p-6 flex justify-between items-center z-50 md:hidden text-rarity-ink">
-                <Link to="/" className="w-12 h-12">
+            <header className={`fixed top-0 left-0 right-0 px-4 py-3 flex justify-between items-center z-50 md:hidden text-rarity-ink transition-all duration-300 ${isScrolled ? 'bg-rarity-navy/80 backdrop-blur-md shadow-lg' : ''}`}>
+                <Link to="/" className="w-10 h-10">
                     <img src={logo} alt="Rarity" className="w-full h-full object-contain" />
                 </Link>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
                     <button onClick={() => setIsCartOpen(true)} aria-label="Open shopping cart" className="relative">
-                        <ShoppingBag className="w-6 h-6 text-rarity-ink" />
+                        <ShoppingBag className="w-5 h-5 text-rarity-ink" />
                         {cartCount > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-rarity-gold rounded-full" />}
                     </button>
                     <button onClick={() => setIsOpen(true)} aria-label="Open menu">
-                        <Menu className="w-8 h-8 text-white" />
+                        <Menu className="w-7 h-7 text-white" />
                     </button>
                 </div>
             </header>
@@ -160,7 +160,7 @@ const Header = () => {
                                     key={link.name}
                                     to={link.path}
                                     onClick={() => { setIsOpen(false); window.scrollTo(0, 0); }}
-                                    className="font-playfair text-5xl text-white hover:text-rarity-gold transition-colors"
+                                    className="font-playfair text-4xl text-white hover:text-rarity-gold transition-colors"
                                 >
                                     <motion.span
                                         initial={{ opacity: 0, y: 20 }}

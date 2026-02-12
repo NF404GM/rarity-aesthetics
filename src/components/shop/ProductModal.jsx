@@ -53,10 +53,10 @@ const ProductModal = ({ product, isOpen, onClose }) => {
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
                         className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none"
                     >
-                        <div className="bg-rarity-navy border border-white/10 rounded-3xl w-full max-w-4xl max-h-[90vh] overflow-hidden pointer-events-auto flex flex-col md:flex-row shadow-2xl">
+                        <div className="bg-rarity-navy border border-white/10 rounded-2xl md:rounded-3xl w-full max-w-4xl max-h-[90vh] overflow-hidden pointer-events-auto flex flex-col md:flex-row shadow-2xl">
 
                             {/* Image Section */}
-                            <div className="w-full md:w-1/2 h-64 md:h-auto relative bg-white/5">
+                            <div className="w-full md:w-1/2 h-48 md:h-auto relative bg-white/5">
                                 <img
                                     src={product.image}
                                     alt={product.name}
@@ -71,7 +71,7 @@ const ProductModal = ({ product, isOpen, onClose }) => {
                             </div>
 
                             {/* Content Section */}
-                            <div className="w-full md:w-1/2 p-8 md:p-12 overflow-y-auto max-h-[60vh] md:max-h-full flex flex-col">
+                            <div className="w-full md:w-1/2 p-5 md:p-8 lg:p-12 overflow-y-auto max-h-[60vh] md:max-h-full flex flex-col">
                                 <div className="flex justify-between items-start mb-6">
                                     <div>
                                         <h2 className="font-playfair text-3xl md:text-4xl text-rarity-ink mb-2 italic">

@@ -88,12 +88,12 @@ const ServiceSection = ({ title, img, index, link, subtitle }) => {
             <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-rarity-ink/90 via-rarity-ink/40 to-transparent pointer-events-none" />
 
             {/* Content Block - Editorial Bottom Left */}
-            <div className="absolute bottom-0 left-0 p-8 md:p-16 w-full md:max-w-3xl flex flex-col items-start z-10">
+            <div className="absolute bottom-0 left-0 p-6 md:p-16 w-full md:max-w-3xl flex flex-col items-start z-10">
                 <span className="text-rarity-gold font-montserrat text-xs tracking-[0.3em] uppercase mb-4 block opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 delay-100">
                     Service 0{index}
                 </span>
 
-                <h2 className="font-playfair text-6xl md:text-8xl text-white mb-6 italic leading-none drop-shadow-lg">
+                <h2 className="font-playfair text-4xl md:text-6xl lg:text-8xl text-white mb-6 italic leading-none drop-shadow-lg">
                     {title}
                 </h2>
 
@@ -202,15 +202,15 @@ const Home = () => {
                                 <img
                                     src={IMAGES.brand.logo}
                                     alt="Rarity Aesthetics"
-                                    className="w-[80vw] md:w-[45vw] max-w-[650px] h-auto object-contain"
+                                    className="w-[70vw] md:w-[45vw] max-w-[650px] h-auto object-contain"
                                 />
                             </motion.div>
 
-                            <div className="flex gap-6 relative z-30">
-                                <Button variant="primary" to="/book" className="min-w-[180px] shadow-2xl bg-rarity-ink/90 text-white hover:bg-rarity-ink border border-white/10 backdrop-blur-sm tracking-widest text-sm py-4">
+                            <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 relative z-30 w-full sm:w-auto px-4 sm:px-0">
+                                <Button variant="primary" to="/book" className="w-full sm:w-auto sm:min-w-[180px] shadow-2xl bg-rarity-ink/90 text-white hover:bg-rarity-ink border border-white/10 backdrop-blur-sm tracking-widest text-xs sm:text-sm py-3 sm:py-4">
                                     Book Appointment
                                 </Button>
-                                <Button variant="outline" to="/services" className="border-rarity-ink text-rarity-ink hover:bg-rarity-ink hover:text-white min-w-[180px] backdrop-blur-sm font-bold tracking-widest text-sm py-4">
+                                <Button variant="outline" to="/services" className="w-full sm:w-auto sm:min-w-[180px] border-rarity-ink text-rarity-ink hover:bg-rarity-ink hover:text-white backdrop-blur-sm font-bold tracking-widest text-xs sm:text-sm py-3 sm:py-4">
                                     View Menu
                                 </Button>
                             </div>
@@ -260,7 +260,7 @@ const Home = () => {
                     <div className="container mx-auto px-6 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
                         <div>
                             <span className="text-rarity-ink/60 font-mono text-xs mb-4 block font-bold">EST. 2024</span>
-                            <h2 className="font-playfair text-6xl md:text-8xl text-rarity-ink mb-8 leading-none">The <br /><span className="text-rarity-gold italic">Lab.</span></h2>
+                            <h2 className="font-playfair text-5xl md:text-6xl lg:text-8xl text-rarity-ink mb-8 leading-none">The <br /><span className="text-rarity-gold italic">Lab.</span></h2>
                             <p className="font-lato text-rarity-gray text-lg mb-12 max-w-md leading-relaxed border-l-2 border-rarity-ink pl-6">
                                 Professional grade materials for the modern artist. Sourced globally, tested locally, used daily in our own studio.
                             </p>
@@ -287,7 +287,7 @@ const Home = () => {
                             <span className="bg-rarity-gold/20 text-rarity-gold px-4 py-1 rounded-full text-xs uppercase tracking-widest mb-4 inline-block border border-rarity-gold/20">
                                 Limited Time
                             </span>
-                            <h2 className="font-playfair text-4xl md:text-6xl text-white mb-4">Valentines Special <Heart className="inline w-8 h-8 text-rarity-gold fill-rarity-gold animate-pulse" /></h2>
+                            <h2 className="font-playfair text-3xl md:text-4xl lg:text-6xl text-white mb-4">Valentines Special <Heart className="inline w-6 h-6 md:w-8 md:h-8 text-rarity-gold fill-rarity-gold animate-pulse" /></h2>
                             <p className="font-lato text-gray-300 max-w-lg text-lg">
                                 Book a full set and receive your follow-up fill <strong>On me ♡</strong>.
                             </p>

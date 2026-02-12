@@ -13,19 +13,19 @@ const Portfolio = () => {
     const filteredItems = filter === 'All' ? portfolioItems : portfolioItems.filter(item => item.category === filter)
 
     return (
-        <div className="bg-rarity-navy min-h-screen pt-40 pb-20 px-6">
+        <div className="bg-rarity-navy min-h-screen pt-28 md:pt-40 pb-20 px-4 md:px-6">
             <SEO title="Portfolio | Rarity Aesthetics" description="A gallery of our finest work." canonical="/portfolio" />
 
             <div className="max-w-[1600px] mx-auto">
-                <header className="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-white/10 pb-10">
-                    <h1 className="font-playfair text-6xl md:text-9xl text-white leading-none">WORK</h1>
+                <header className="flex flex-col md:flex-row justify-between items-end mb-10 md:mb-20 border-b border-white/10 pb-10">
+                    <h1 className="font-playfair text-5xl md:text-6xl lg:text-9xl text-white leading-none">WORK</h1>
 
-                    <div className="flex gap-8 mt-8 md:mt-0">
+                    <div className="flex flex-wrap gap-3 md:gap-8 mt-6 md:mt-0">
                         {filters.map(f => (
                             <button
                                 key={f}
                                 onClick={() => setFilter(f)}
-                                className={`text-sm uppercase tracking-[0.2em] transition-colors ${filter === f ? 'text-rarity-gold' : 'text-gray-500 hover:text-white'}`}
+                                className={`text-xs md:text-sm uppercase tracking-[0.15em] md:tracking-[0.2em] transition-colors ${filter === f ? 'text-rarity-gold' : 'text-gray-500 hover:text-white'}`}
                             >
                                 {f}
                             </button>

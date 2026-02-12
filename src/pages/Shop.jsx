@@ -65,7 +65,7 @@ const Shop = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1, duration: 0.8 }}
-                        className="font-playfair text-6xl md:text-9xl text-white italic"
+                        className="font-playfair text-5xl md:text-6xl lg:text-9xl text-white italic"
                     >
                         The Lab
                     </motion.h1>
@@ -136,7 +136,7 @@ const Shop = () => {
                             <button
                                 key={cat}
                                 onClick={() => setActiveCategory(cat)}
-                                className={`px-6 py-2 rounded-full text-xs uppercase tracking-widest transition-all duration-300 whitespace-nowrap ${activeCategory === cat ? 'bg-white text-rarity-navy font-bold' : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'}`}
+                                className={`px-4 md:px-6 py-2 rounded-full text-xs uppercase tracking-widest transition-all duration-300 whitespace-nowrap ${activeCategory === cat ? 'bg-white text-rarity-navy font-bold' : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'}`}
                             >
                                 {cat}
                             </button>
@@ -145,7 +145,7 @@ const Shop = () => {
                 </div>
 
                 {/* Product Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-8 gap-y-10 md:gap-y-16">
                     {filteredProducts?.map((product) => (
                         <motion.div
                             key={product.id}
@@ -156,7 +156,7 @@ const Shop = () => {
                             onClick={() => handleProductClick(product)}
                         >
                             {/* Card Image */}
-                            <div className="relative aspect-[4/5] bg-white/5 rounded-3xl overflow-hidden mb-6 cursor-pointer">
+                            <div className="relative aspect-[4/5] bg-white/5 rounded-2xl md:rounded-3xl overflow-hidden mb-4 md:mb-6 cursor-pointer">
                                 {product.badge && (
                                     <div className="absolute top-4 left-4 z-20 bg-rarity-gold text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
                                         {product.badge}

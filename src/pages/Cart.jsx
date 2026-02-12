@@ -17,13 +17,13 @@ const Cart = () => {
     } = useShop()
 
     return (
-        <div className="bg-rarity-navy min-h-screen pt-40 pb-20 px-6">
+        <div className="bg-rarity-navy min-h-screen pt-28 md:pt-40 pb-20 px-4 md:px-6">
             <SEO title="Concierge Cart | Rarity Aesthetics" description="Review your curated selection." canonical="/cart" />
 
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-white/10 pb-8">
                     <div>
-                        <h1 className="font-playfair text-5xl md:text-7xl text-white mb-4 italic">Concierge.</h1>
+                        <h1 className="font-playfair text-4xl md:text-5xl lg:text-7xl text-white mb-4 italic">Concierge.</h1>
                         <p className="font-lato text-gray-400 text-lg">
                             {cartCount} {cartCount === 1 ? 'item' : 'items'} in your collection
                         </p>
@@ -35,7 +35,7 @@ const Cart = () => {
                 </div>
 
                 {cart.length === 0 ? (
-                    <div className="text-center py-32 bg-white/5 rounded-[3rem] border border-white/5 backdrop-blur-sm">
+                    <div className="text-center py-16 md:py-32 bg-white/5 rounded-2xl md:rounded-[3rem] border border-white/5 backdrop-blur-sm">
                         <p className="font-playfair text-3xl text-white/50 mb-8 italic">Your collection is empty.</p>
                         <Button variant="primary" to="/shop">Explore The Lab</Button>
                     </div>
@@ -52,7 +52,7 @@ const Cart = () => {
 
                         {/* Right Column: Summary */}
                         <div className="lg:col-span-1">
-                            <div className="sticky top-32 bg-rarity-ink/40 backdrop-blur-md rounded-3xl p-8 border border-white/10 shadow-2xl">
+                            <div className="sticky top-32 bg-rarity-ink/40 backdrop-blur-md rounded-2xl md:rounded-3xl p-6 md:p-8 border border-white/10 shadow-2xl">
                                 <h3 className="font-playfair text-2xl text-white mb-6 italic">Order Summary</h3>
 
                                 <div className="space-y-4 mb-8">

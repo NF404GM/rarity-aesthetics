@@ -22,12 +22,12 @@ const Contact = () => {
 
                 <form className="space-y-4">
                     {/* Placeholder for real form fields */}
-                    <div className="grid grid-cols-2 gap-4">
-                        <input type="text" placeholder="First Name" className="border p-3 w-full" />
-                        <input type="text" placeholder="Last Name" className="border p-3 w-full" />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input type="text" placeholder="First Name" className="border border-rarity-navy/10 p-3 w-full rounded-xl bg-white/50 focus:outline-none focus:ring-2 focus:ring-rarity-gold font-lato transition-all" />
+                        <input type="text" placeholder="Last Name" className="border border-rarity-navy/10 p-3 w-full rounded-xl bg-white/50 focus:outline-none focus:ring-2 focus:ring-rarity-gold font-lato transition-all" />
                     </div>
-                    <input type="email" placeholder="Email Address" className="border p-3 w-full" />
-                    <textarea placeholder="Message" className="border p-3 w-full h-32"></textarea>
+                    <input type="email" placeholder="Email Address" className="border border-rarity-navy/10 p-3 w-full rounded-xl bg-white/50 focus:outline-none focus:ring-2 focus:ring-rarity-gold font-lato transition-all" />
+                    <textarea placeholder="Message" className="border border-rarity-navy/10 p-3 w-full h-32 rounded-xl bg-white/50 focus:outline-none focus:ring-2 focus:ring-rarity-gold font-lato transition-all resize-none"></textarea>
                     <Button variant="primary" className="w-full">Send Message</Button>
                 </form>
             </div>

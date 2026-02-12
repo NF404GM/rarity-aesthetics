@@ -50,7 +50,7 @@ const FAQ = () => {
 
             <div className="max-w-3xl mx-auto space-y-6">
                 {questions.map((item, i) => (
-                    <div key={i} className="bg-white/50 backdrop-blur-sm border border-rarity-navy/10 p-6 rounded-2xl hover:shadow-md transition-all">
+                    <div key={i} className="bg-white/50 backdrop-blur-sm border border-rarity-navy/10 p-4 md:p-6 rounded-xl md:rounded-2xl hover:shadow-md transition-all">
                         <h3 className="font-playfair text-xl text-rarity-navy mb-3 font-semibold">
                             {item.q}
                         </h3>

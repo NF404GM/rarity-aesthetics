@@ -3,7 +3,7 @@ import logo from '../../assets/logo.webp'
 
 const Footer = () => {
     return (
-        <footer className="bg-rarity-ink text-rarity-cream pt-40 pb-10 relative overflow-hidden">
+        <footer className="bg-rarity-ink text-rarity-cream pt-20 md:pt-40 pb-10 relative overflow-hidden">
             {/* Giant Watermark */}
             <div className="absolute top-0 left-0 w-full overflow-hidden pointer-events-none opacity-[0.03]">
                 <h2 className="text-[20vw] font-playfair leading-none whitespace-nowrap text-white">RARITY</h2>
@@ -14,7 +14,7 @@ const Footer = () => {
                     {/* Column 1: Manifesto */}
                     <div className="md:col-span-4 space-y-8">
                         <img src={logo} alt="Rarity Aesthetics" className="w-24 h-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]" />
-                        <h3 className="font-playfair text-5xl md:text-6xl text-white leading-[0.9]">
+                        <h3 className="font-playfair text-3xl md:text-5xl lg:text-6xl text-white leading-[0.9]">
                             Artistry <br /> <span className="text-rarity-gold italic">Undefined.</span>
                         </h3>
                         <p className="font-lato text-gray-400 max-w-sm">
@@ -29,7 +29,7 @@ const Footer = () => {
                         <ul className="space-y-4">
                             {['Home', 'Services', 'Shop', 'Portfolio', 'Contact', 'Book Now'].map((item) => (
                                 <li key={item}>
-                                    <Link to={item === 'Home' ? '/' : item === 'Book Now' ? '/book' : `/${item.toLowerCase()}`} className="font-playfair text-2xl hover:text-rarity-gold hover:translate-x-4 transition-all duration-300 inline-block">
+                                    <Link to={item === 'Home' ? '/' : item === 'Book Now' ? '/book' : `/${item.toLowerCase()}`} className="font-playfair text-xl md:text-2xl hover:text-rarity-gold hover:translate-x-4 transition-all duration-300 inline-block">
                                         {item}
                                     </Link>
                                 </li>
@@ -58,7 +58,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col md:flex-row justify-between items-end mt-40 pt-8 border-t border-white/5">
+                <div className="flex flex-col md:flex-row justify-between items-center md:items-end mt-16 md:mt-40 pt-8 border-t border-white/5 gap-2">
                     <p className="text-[10px] uppercase tracking-widest text-gray-500">© 2026 Rarity Aesthetics</p>
                     <p className="text-[10px] uppercase tracking-widest text-gray-500">Designed by WHERE.T.AT</p>
                 </div>

@@ -38,15 +38,15 @@ const About = () => {
             </div>
 
             {/* RIGHT PANEL - Interactive Content (The Kinetic) */}
-            <div className="w-full md:w-1/2 h-[auto] md:h-screen flex flex-col justify-center p-6 md:p-20 relative z-30 -mt-20 md:mt-0">
+            <div className="w-full md:w-1/2 h-[auto] md:h-screen flex flex-col justify-center px-5 py-6 md:p-20 relative z-30 -mt-16 md:mt-0">
 
                 {/* Navigation Tabs */}
-                <div className="flex gap-8 border-b border-rarity-ink/10 mb-12 relative">
+                <div className="flex gap-3 md:gap-8 border-b border-rarity-ink/10 mb-12 relative overflow-x-auto no-scrollbar">
                     {chapters.map((chapter) => (
                         <button
                             key={chapter.id}
                             onClick={() => setActiveChapter(chapter.id)}
-                            className={`pb-4 text-sm font-montserrat tracking-[0.2em] uppercase transition-all duration-500 relative ${activeChapter === chapter.id ? 'text-rarity-ink font-bold' : 'text-rarity-ink/40 hover:text-rarity-gold'
+                            className={`pb-4 text-[11px] md:text-sm font-montserrat tracking-[0.1em] md:tracking-[0.2em] uppercase transition-all duration-500 relative whitespace-nowrap ${activeChapter === chapter.id ? 'text-rarity-ink font-bold' : 'text-rarity-ink/40 hover:text-rarity-gold'
                                 }`}
                         >
                             {chapter.label}
@@ -73,7 +73,7 @@ const About = () => {
                                 transition={{ duration: 0.5 }}
                                 className="space-y-6"
                             >
-                                <h1 className="font-playfair text-6xl md:text-7xl text-rarity-ink italic mb-2">
+                                <h1 className="font-playfair text-4xl md:text-6xl lg:text-7xl text-rarity-ink italic mb-2">
                                     Ashley.
                                 </h1>
                                 <p className="font-lato text-rarity-ink/80 text-lg leading-relaxed max-w-md">

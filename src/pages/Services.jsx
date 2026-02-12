@@ -50,12 +50,12 @@ const ServiceSlide = ({ section, index, onOpenDrawer }) => {
     return (
         <div className="w-screen h-screen flex-shrink-0 flex flex-col lg:flex-row snap-start relative">
             {/* Text Side (Left) - Light Blue Theme */}
-            <div className="w-full lg:w-1/2 h-[50vh] lg:h-full bg-rarity-navy flex flex-col justify-center px-8 md:px-20 relative z-10">
+            <div className="w-full lg:w-1/2 h-[50vh] lg:h-full bg-rarity-navy flex flex-col justify-center px-6 md:px-20 relative z-10">
                 <span className="text-rarity-ink/40 font-mono text-sm mb-6 block">
                     0{index + 1} — Collection
                 </span>
 
-                <h2 className="font-playfair text-6xl md:text-8xl text-rarity-ink mb-8 leading-[0.9]">
+                <h2 className="font-playfair text-4xl md:text-6xl lg:text-8xl text-rarity-ink mb-8 leading-[0.9]">
                     {section.category}
                 </h2>
 
@@ -67,7 +67,7 @@ const ServiceSlide = ({ section, index, onOpenDrawer }) => {
                 <div className="flex gap-6">
                     <button
                         onClick={() => onOpenDrawer(section)}
-                        className="group flex items-center gap-4 bg-rarity-ink text-white px-8 py-4 rounded-full hover:bg-rarity-gold transition-all duration-300"
+                        className="group flex items-center gap-4 bg-rarity-ink text-white px-6 py-3 md:px-8 md:py-4 rounded-full hover:bg-rarity-gold transition-all duration-300"
                     >
                         <span className="text-xs uppercase tracking-widest font-bold">View Service Menu</span>
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

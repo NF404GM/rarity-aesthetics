@@ -73,13 +73,13 @@ const Book = () => {
     // ... imports
 
     return (
-        <div className="min-h-screen bg-rarity-navy flex items-center justify-center p-4 md:p-12 font-sans pt-24">
+        <div className="min-h-screen bg-rarity-navy flex items-center justify-center p-4 md:p-12 font-sans pt-20 md:pt-24">
             <SEO title="Book Appointment | Rarity Aesthetics" description="Schedule your luxury lash or brow appointment online. Located in Thornton, CO." canonical="/book" />
 
-            <div className="w-full max-w-6xl bg-white/40 backdrop-blur-xl rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col lg:flex-row min-h-[80vh] relative border border-white/50">
+            <div className="w-full max-w-6xl bg-white/40 backdrop-blur-xl rounded-2xl md:rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col lg:flex-row min-h-[80vh] relative border border-white/50">
 
                 {/* Left Sidebar ... */}
-                <div className={`lg:w-1/3 bg-white/60 p-8 md:p-12 flex flex-col border-r border-white/50 ${currentStep === 4 ? 'hidden lg:flex' : ''}`}>
+                <div className={`lg:w-1/3 bg-white/60 p-5 md:p-8 lg:p-12 flex flex-col border-r border-white/50 ${currentStep === 4 ? 'hidden lg:flex' : ''}`}>
                     {/* ... sidebar content ... */}
                     <div className="mb-12">
                         {currentStep > 0 && currentStep < 4 && (
@@ -122,7 +122,7 @@ const Book = () => {
                 </div>
 
                 {/* Right Content (Active Step) */}
-                <div className="flex-1 p-6 md:p-20 overflow-y-auto relative custom-scrollbar">
+                <div className="flex-1 p-4 md:p-12 lg:p-20 overflow-y-auto relative custom-scrollbar">
                     {/* Background Decoration */}
                     <div className="absolute top-0 right-0 w-64 h-64 bg-rarity-gold/5 rounded-full blur-3xl -z-10" />
 

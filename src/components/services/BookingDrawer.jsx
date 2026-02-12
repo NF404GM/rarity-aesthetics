@@ -25,14 +25,14 @@ const BookingDrawer = ({ isOpen, onClose, category, items }) => {
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                         className="fixed top-0 right-0 h-full w-full md:w-[500px] bg-white z-[70] shadow-2xl overflow-y-auto"
                     >
-                        <div className="p-8 md:p-12 min-h-full flex flex-col">
+                        <div className="p-5 md:p-8 lg:p-12 min-h-full flex flex-col">
                             {/* Header */}
-                            <div className="flex justify-between items-start mb-12">
+                            <div className="flex justify-between items-start mb-8 md:mb-12">
                                 <div>
                                     <span className="text-rarity-gold font-montserrat text-xs tracking-[0.2em] uppercase block mb-2">
                                         Booking Request
                                     </span>
-                                    <h2 className="font-playfair text-4xl text-rarity-ink italic">
+                                    <h2 className="font-playfair text-3xl md:text-4xl text-rarity-ink italic">
                                         {category}
                                     </h2>
                                 </div>
@@ -81,7 +81,7 @@ const BookingDrawer = ({ isOpen, onClose, category, items }) => {
                             </div>
 
                             {/* Footer */}
-                            <div className="mt-12 pt-8 border-t border-gray-100 text-center">
+                            <div className="mt-8 md:mt-12 pt-8 border-t border-gray-100 text-center">
                                 <p className="font-lato text-gray-400 text-xs">
                                     A 50% deposit is required to secure all appointments.
                                 </p>

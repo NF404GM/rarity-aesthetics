@@ -64,12 +64,12 @@ const NewsletterPopup = () => {
                         <div className="relative w-full max-w-md">
 
                             {/* Cloud Bumps (Absolute positioned circles) */}
-                            <div className="absolute -top-12 left-8 w-32 h-32 bg-rarity-navy rounded-full" />
-                            <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-40 h-40 bg-rarity-navy rounded-full" />
-                            <div className="absolute -top-10 right-8 w-28 h-28 bg-rarity-navy rounded-full" />
+                            <div className="absolute -top-8 md:-top-12 left-8 w-20 md:w-32 h-20 md:h-32 bg-rarity-navy rounded-full" />
+                            <div className="absolute -top-10 md:-top-16 left-1/2 -translate-x-1/2 w-28 md:w-40 h-28 md:h-40 bg-rarity-navy rounded-full" />
+                            <div className="absolute -top-6 md:-top-10 right-8 w-16 md:w-28 h-16 md:h-28 bg-rarity-navy rounded-full" />
 
                             {/* Main Body */}
-                            <div className="relative bg-rarity-navy rounded-[3rem] p-8 pt-12 md:p-12 text-center pb-16">
+                            <div className="relative bg-rarity-navy rounded-[2rem] md:rounded-[3rem] p-5 pt-10 md:p-8 md:pt-12 lg:p-12 text-center pb-12 md:pb-16">
 
                                 {/* Close Button (Floating) */}
                                 <button
@@ -85,7 +85,7 @@ const NewsletterPopup = () => {
                                         <Sparkles className="w-6 h-6 text-rarity-gold animate-pulse" />
                                     </div>
 
-                                    <h2 className="font-playfair text-3xl md:text-4xl text-rarity-ink italic mb-2">
+                                    <h2 className="font-playfair text-2xl md:text-3xl lg:text-4xl text-rarity-ink italic mb-2">
                                         Welcome Lash Angel
                                     </h2>
 
