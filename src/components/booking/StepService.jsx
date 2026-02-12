@@ -26,7 +26,7 @@ const StepService = ({ serviceData, selectedService, onSelect }) => {
                         animate={{ opacity: 1, y: 0 }}
                         onClick={() => onSelect(service)}
                         className={`
-                            relative p-8 rounded-3xl cursor-pointer border transition-all duration-300 group
+                            relative p-4 md:p-8 rounded-2xl md:rounded-3xl cursor-pointer border transition-all duration-300 group
                             ${selectedService?.id === service.id
                                 ? 'bg-rarity-ink text-white border-rarity-ink shadow-2xl scale-[1.02] z-10'
                                 : 'bg-white text-rarity-ink border-transparent shadow-sm hover:border-rarity-gold/30 hover:bg-white/90 hover:shadow-md'}
@@ -38,7 +38,7 @@ const StepService = ({ serviceData, selectedService, onSelect }) => {
                                 <span className="text-[10px] uppercase tracking-widest opacity-60 mb-1 block">
                                     {service.categoryName}
                                 </span>
-                                <h3 className="font-playfair text-xl flex items-center gap-2">
+                                <h3 className="font-playfair text-base md:text-xl flex items-center gap-2">
                                     {service.title}
                                     {service.special && (
                                         <span className={`text-[10px] px-2 py-0.5 rounded-full border flex items-center gap-1 ${selectedService?.id === service.id ? 'text-rarity-gold border-rarity-gold' : 'text-rarity-gold border-rarity-gold/20'}`}>
@@ -55,7 +55,7 @@ const StepService = ({ serviceData, selectedService, onSelect }) => {
                         </div>
 
                         {/* Selection Indicator - Cleanly positioned */}
-                        <div className={`absolute top-8 right-8 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors z-20 ${selectedService?.id === service.id ? 'border-rarity-gold bg-rarity-gold' : 'border-gray-200'}`}>
+                        <div className={`absolute top-4 right-4 md:top-8 md:right-8 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors z-20 ${selectedService?.id === service.id ? 'border-rarity-gold bg-rarity-gold' : 'border-gray-200'}`}>
                             {selectedService?.id === service.id && <Check className="w-4 h-4 text-white" />}
                         </div>
                     </motion.div>

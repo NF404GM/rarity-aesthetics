@@ -123,7 +123,7 @@ const Header = () => {
             </motion.header>
 
             {/* Mobile Header (Minimal) */}
-            <header className={`fixed top-0 left-0 right-0 px-4 py-3 flex justify-between items-center z-50 md:hidden text-rarity-ink transition-all duration-300 ${isScrolled ? 'bg-rarity-navy/80 backdrop-blur-md shadow-lg' : ''}`}>
+            <header className={`fixed top-8 left-0 right-0 px-4 py-3 flex justify-between items-center z-50 md:hidden text-rarity-ink transition-all duration-300 ${isScrolled ? 'bg-rarity-navy/80 backdrop-blur-md shadow-lg' : ''}`}>
                 <Link to="/" className="w-10 h-10">
                     <img src={logo} alt="Rarity" className="w-full h-full object-contain" />
                 </Link>

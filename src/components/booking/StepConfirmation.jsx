@@ -63,12 +63,12 @@ const StepConfirmation = ({ bookingData }) => {
                 </motion.div>
             </div>
 
-            <h2 className="font-playfair text-4xl text-rarity-ink mb-4">You're Booked!</h2>
+            <h2 className="font-playfair text-3xl md:text-4xl text-rarity-ink mb-4">You're Booked!</h2>
             <p className="font-lato text-gray-500 mb-12 max-w-md mx-auto">
                 Thank you, {bookingData.form.name.split(' ')[0]}. Currently this is a demo, but your spot for {bookingData.service.title} is locked in spirit!
             </p>
 
-            <div className="bg-white/60 p-8 rounded-3xl max-w-sm mx-auto mb-12 text-left space-y-4">
+            <div className="bg-white/60 p-5 md:p-8 rounded-2xl md:rounded-3xl max-w-sm mx-auto mb-12 text-left space-y-4">
                 <div className="flex items-center gap-4">
                     <Calendar className="w-5 h-5 text-rarity-gold" />
                     <span className="font-lato text-rarity-ink">

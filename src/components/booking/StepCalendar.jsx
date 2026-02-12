@@ -89,7 +89,7 @@ const StepCalendar = ({ selectedDate, onSelect }) => {
                 days.push(
                     <div
                         key={day}
-                        className={`relative h-14 border border-transparent rounded-xl flex items-center justify-center cursor-pointer transition-all duration-200
+                        className={`relative h-11 md:h-14 border border-transparent rounded-xl flex items-center justify-center cursor-pointer transition-all duration-200
                             ${!isSameMonth(day, monthStart) ? 'text-gray-200' : isDisabled ? 'text-gray-300 cursor-not-allowed' : 'text-rarity-ink hover:bg-white hover:shadow-md'}
                             ${isSameDay(day, selectedDate) ? 'bg-rarity-ink text-white shadow-lg hover:bg-rarity-ink hover:text-white' : ''}
                         `}
@@ -114,7 +114,7 @@ const StepCalendar = ({ selectedDate, onSelect }) => {
     }
 
     return (
-        <div className="bg-white/50 backdrop-blur-sm p-6 rounded-3xl border border-white/40">
+        <div className="bg-white/50 backdrop-blur-sm p-3 md:p-6 rounded-2xl md:rounded-3xl border border-white/40">
             {renderHeader()}
             {renderDays()}
             {renderCells()}

@@ -255,13 +255,13 @@ const Home = () => {
                 <section className="h-screen flex items-center relative overflow-hidden group">
                     <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[2000ms] group-hover:scale-110 opacity-100" style={{ backgroundImage: `url(${IMAGES.home.shopTeaser})` }} />
                     {/* Reduced Gradient Overlay - Partial left tint only */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-rarity-navy/90 via-rarity-navy/40 to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-rarity-navy/95 via-rarity-navy/50 to-transparent pointer-events-none" />
 
                     <div className="container mx-auto px-6 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
                         <div>
                             <span className="text-rarity-ink/60 font-mono text-xs mb-4 block font-bold">EST. 2024</span>
                             <h2 className="font-playfair text-5xl md:text-6xl lg:text-8xl text-rarity-ink mb-8 leading-none">The <br /><span className="text-rarity-gold italic">Lab.</span></h2>
-                            <p className="font-lato text-rarity-gray text-lg mb-12 max-w-md leading-relaxed border-l-2 border-rarity-ink pl-6">
+                            <p className="font-lato text-rarity-ink/90 text-lg mb-12 max-w-md leading-relaxed border-l-2 border-rarity-ink pl-6">
                                 Professional grade materials for the modern artist. Sourced globally, tested locally, used daily in our own studio.
                             </p>
                             <div className="flex gap-6">

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, Calendar, Clock, Sparkles } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Calendar, Clock, Sparkles, Check } from 'lucide-react'
 import { useLocation } from 'react-router-dom'
 import SEO from '../components/core/SEO'
 import { IMAGES } from '../constants/images'
@@ -70,17 +70,48 @@ const Book = () => {
         }
     }
 
-    // ... imports
-
     return (
-        <div className="min-h-screen bg-rarity-navy flex items-center justify-center p-4 md:p-12 font-sans pt-20 md:pt-24">
+        <div className="min-h-screen bg-rarity-navy font-sans pt-16 md:pt-24">
             <SEO title="Book Appointment | Rarity Aesthetics" description="Schedule your luxury lash or brow appointment online. Located in Thornton, CO." canonical="/book" />
 
-            <div className="w-full max-w-6xl bg-white/40 backdrop-blur-xl rounded-2xl md:rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col lg:flex-row min-h-[80vh] relative border border-white/50">
+            {/* ─── MOBILE: Compact Progress Bar ─── */}
+            <div className="lg:hidden sticky top-16 z-40 bg-rarity-navy/90 backdrop-blur-md border-b border-white/10 px-4 py-3">
+                <div className="flex items-center justify-between mb-2">
+                    {currentStep > 0 && currentStep < 4 ? (
+                        <button onClick={handleBack} className="flex items-center gap-1.5 text-[10px] font-montserrat tracking-widest text-rarity-ink/60 hover:text-rarity-ink">
+                            <ArrowLeft className="w-3 h-3" /> BACK
+                        </button>
+                    ) : <div />}
+                    <span className="text-rarity-gold font-montserrat text-[10px] tracking-[0.3em] uppercase">
+                        {currentStep + 1} of {STEPS.length}
+                    </span>
+                </div>
+                {/* Step dots */}
+                <div className="flex items-center gap-1.5">
+                    {STEPS.map((step, i) => (
+                        <div key={step} className="flex-1 flex flex-col items-center gap-1">
+                            <div className={`h-1 w-full rounded-full transition-all duration-500 ${i < currentStep ? 'bg-rarity-gold' :
+                                    i === currentStep ? 'bg-rarity-ink' :
+                                        'bg-rarity-ink/15'
+                                }`} />
+                        </div>
+                    ))}
+                </div>
+                <div className="flex justify-between mt-1.5">
+                    {STEPS.map((step, i) => (
+                        <span key={step} className={`text-[8px] font-montserrat tracking-wider uppercase ${i === currentStep ? 'text-rarity-ink font-bold' :
+                                i < currentStep ? 'text-rarity-gold' :
+                                    'text-rarity-ink/30'
+                            }`}>{step}</span>
+                    ))}
+                </div>
+            </div>
 
-                {/* Left Sidebar ... */}
-                <div className={`lg:w-1/3 bg-white/60 p-5 md:p-8 lg:p-12 flex flex-col border-r border-white/50 ${currentStep === 4 ? 'hidden lg:flex' : ''}`}>
-                    {/* ... sidebar content ... */}
+            {/* ─── MAIN LAYOUT ─── */}
+            <div className="flex flex-col lg:flex-row max-w-6xl mx-auto min-h-[calc(100vh-4rem)] lg:min-h-[80vh] lg:my-8 lg:mx-auto">
+
+                {/* ─── DESKTOP SIDEBAR (hidden on mobile) ─── */}
+                <div className={`hidden lg:flex lg:w-1/3 bg-white/40 backdrop-blur-xl rounded-l-[2.5rem] p-8 lg:p-12 flex-col border-r border-white/50 ${currentStep === 4 ? 'lg:hidden' : ''}`}>
                     <div className="mb-12">
                         {currentStep > 0 && currentStep < 4 && (
                             <button onClick={handleBack} className="flex items-center gap-2 text-xs font-montserrat tracking-widest text-gray-500 hover:text-rarity-ink mb-6">
@@ -121,8 +152,8 @@ const Book = () => {
                     </div>
                 </div>
 
-                {/* Right Content (Active Step) */}
-                <div className="flex-1 p-4 md:p-12 lg:p-20 overflow-y-auto relative custom-scrollbar">
+                {/* ─── CONTENT AREA ─── */}
+                <div className={`flex-1 p-4 md:p-8 lg:p-16 overflow-y-auto relative ${currentStep === 4 ? 'lg:rounded-[2.5rem]' : 'lg:rounded-r-[2.5rem]'} bg-white/30 lg:bg-white/40 backdrop-blur-xl lg:border lg:border-white/50`}>
                     {/* Background Decoration */}
                     <div className="absolute top-0 right-0 w-64 h-64 bg-rarity-gold/5 rounded-full blur-3xl -z-10" />
 
@@ -140,6 +171,25 @@ const Book = () => {
                     </AnimatePresence>
                 </div>
             </div>
+
+            {/* ─── MOBILE: Floating Summary Pill (when service selected) ─── */}
+            {bookingData.service && currentStep > 0 && currentStep < 4 && (
+                <div className="lg:hidden fixed bottom-4 left-4 right-4 z-40 bg-rarity-ink/90 backdrop-blur-md text-white px-4 py-3 rounded-2xl shadow-2xl border border-white/10 flex items-center justify-between">
+                    <div className="flex items-center gap-3 min-w-0">
+                        <Sparkles className="w-4 h-4 text-rarity-gold flex-shrink-0" />
+                        <div className="min-w-0">
+                            <p className="text-xs font-bold truncate">{bookingData.service.title}</p>
+                            <p className="text-[10px] text-white/60">{bookingData.service.price} · {bookingData.service.duration}</p>
+                        </div>
+                    </div>
+                    {bookingData.date && (
+                        <span className="text-[10px] text-rarity-gold whitespace-nowrap ml-2">
+                            {bookingData.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                            {bookingData.time ? ` · ${bookingData.time}` : ''}
+                        </span>
+                    )}
+                </div>
+            )}
         </div>
     )
 }

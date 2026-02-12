@@ -33,6 +33,7 @@ export default {
         'slow-spin': 'spin 12s linear infinite',
         'fade-up': 'fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'reveal': 'reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards',
+        'bounceX': 'bounceX 1s infinite',
       },
       keyframes: {
         fadeUp: {
@@ -42,6 +43,10 @@ export default {
         reveal: {
           '0%': { clipPath: 'inset(100% 0 0 0)' },
           '100%': { clipPath: 'inset(0 0 0 0)' },
+        },
+        bounceX: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(25%)' },
         }
       }
     },

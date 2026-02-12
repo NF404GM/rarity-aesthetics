@@ -137,11 +137,11 @@ const Services = () => {
                             Service<span className="italic text-rarity-gold">s</span>
                         </h1>
                         <p className="font-lato text-rarity-ink/70 max-w-lg mx-auto mb-12">
-                            Scroll to explore our collections.
-                            <span className="hidden lg:inline"><br />Use your mouse wheel or trackpad.</span>
+                            <span className="lg:hidden">Swipe to explore our collections.</span>
+                            <span className="hidden lg:inline">Scroll to explore our collections.<br />Use your mouse wheel or trackpad.</span>
                         </p>
-                        <div className="animate-bounce text-rarity-ink/40">
-                            <ArrowRight className="w-6 h-6 rotate-90 lg:rotate-0 mx-auto" />
+                        <div className="text-rarity-ink/40 animate-[bounceX_1s_infinite] lg:animate-bounce">
+                            <ArrowRight className="w-6 h-6 mx-auto" />
                         </div>
                     </div>
                 </div>
