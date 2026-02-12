@@ -1,0 +1,156 @@
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import SEO from '../components/core/SEO'
+import { IMAGES } from '../constants/images'
+import { Star, Award, Heart } from 'lucide-react'
+
+const About = () => {
+    const [activeChapter, setActiveChapter] = useState('artist')
+
+    const chapters = [
+        { id: 'artist', label: 'The Artist', icon: UserIcon },
+        { id: 'philosophy', label: 'The Philosophy', icon: Heart },
+        { id: 'craft', label: 'The Craft', icon: Award },
+    ]
+
+    return (
+        <div className="bg-rarity-navy min-h-screen flex flex-col md:flex-row overflow-hidden relative">
+            <SEO title="About Ashley | Rarity Aesthetics" description="Meet Ashley, a Master Lash Artist and Licensed Esthetician specializing in natural health and volume styling in Thornton, CO." canonical="/about" />
+
+            {/* LEFT PANEL - Fixed Image (The Anchor) */}
+            <div className="w-full md:w-1/2 h-[50vh] md:h-screen relative overflow-hidden group flex items-center justify-center bg-rarity-navy">
+                {/* Decor: Subtle Glow behind circle */}
+                <div className="absolute w-[500px] h-[500px] bg-rarity-gold/5 rounded-full blur-3xl" />
+
+                <div className="relative w-64 h-64 md:w-[450px] md:h-[450px] rounded-full overflow-hidden border-4 border-white/20 shadow-2xl z-20">
+                    <motion.img
+                        initial={{ scale: 1.1, filter: "grayscale(100%)" }}
+                        animate={{ scale: 1, filter: "grayscale(0%)" }}
+                        transition={{ duration: 1.5 }}
+                        src={IMAGES.about.portrait}
+                        alt="Ashley - Master Lash Artist"
+                        className="w-full h-full object-cover object-top"
+                    />
+                </div>
+
+                {/* Mobile Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-rarity-navy via-transparent to-transparent md:hidden z-20 pointer-events-none" />
+            </div>
+
+            {/* RIGHT PANEL - Interactive Content (The Kinetic) */}
+            <div className="w-full md:w-1/2 h-[auto] md:h-screen flex flex-col justify-center p-6 md:p-20 relative z-30 -mt-20 md:mt-0">
+
+                {/* Navigation Tabs */}
+                <div className="flex gap-8 border-b border-rarity-ink/10 mb-12 relative">
+                    {chapters.map((chapter) => (
+                        <button
+                            key={chapter.id}
+                            onClick={() => setActiveChapter(chapter.id)}
+                            className={`pb-4 text-sm font-montserrat tracking-[0.2em] uppercase transition-all duration-500 relative ${activeChapter === chapter.id ? 'text-rarity-ink font-bold' : 'text-rarity-ink/40 hover:text-rarity-gold'
+                                }`}
+                        >
+                            {chapter.label}
+                            {/* Kinetic Underline */}
+                            {activeChapter === chapter.id && (
+                                <motion.div
+                                    layoutId="underline"
+                                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-rarity-gold"
+                                />
+                            )}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Dynamic Content Area - Glass Card */}
+                <div className="min-h-[300px] relative">
+                    <AnimatePresence mode="wait">
+                        {activeChapter === 'artist' && (
+                            <motion.div
+                                key="artist"
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -20 }}
+                                transition={{ duration: 0.5 }}
+                                className="space-y-6"
+                            >
+                                <h1 className="font-playfair text-6xl md:text-7xl text-rarity-ink italic mb-2">
+                                    Ashley.
+                                </h1>
+                                <p className="font-lato text-rarity-ink/80 text-lg leading-relaxed max-w-md">
+                                    "I don't just apply lashes; I design confidence. My studio is a sanctuary where precision meets artistry, and where you are the muse."
+                                </p>
+                                <div className="w-24 h-[1px] bg-rarity-gold mt-8" />
+                            </motion.div>
+                        )}
+
+                        {activeChapter === 'philosophy' && (
+                            <motion.div
+                                key="philosophy"
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -20 }}
+                                transition={{ duration: 0.5 }}
+                                className="space-y-8"
+                            >
+                                <h2 className="font-playfair text-4xl text-rarity-ink">Invisible Luxury.</h2>
+                                <blockquote className="font-playfair text-2xl text-rarity-ink/90 italic border-l-2 border-rarity-gold pl-6 py-2">
+                                    "My work is not about changing how you look. It's about revealing who you are."
+                                </blockquote>
+                                <p className="font-lato text-rarity-ink/80 text-lg leading-relaxed">
+                                    Every set is a collaboration—a study of your bone structure, your style, and your daily life. True luxury feels weightless and looks effortless.
+                                </p>
+                            </motion.div>
+                        )}
+
+                        {activeChapter === 'craft' && (
+                            <motion.div
+                                key="craft"
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -20 }}
+                                transition={{ duration: 0.5 }}
+                                className="space-y-6"
+                            >
+                                <h2 className="font-playfair text-4xl text-rarity-ink mb-6">The Craft.</h2>
+                                <p className="font-lato text-rarity-ink/80 mb-8">
+                                    With over 5 years of specialized experience in volume and mega-volume techniques, I have dedicated my career to the integrity of the natural lash.
+                                </p>
+
+                                <div className="bg-white/40 backdrop-blur-md p-6 rounded-sm border border-white/50 shadow-sm hover:shadow-md transition-shadow duration-500">
+                                    <h3 className="font-montserrat text-xs uppercase tracking-widest text-rarity-gold mb-4 font-bold flex items-center gap-2">
+                                        <Star className="w-4 h-4" /> Credentials
+                                    </h3>
+                                    <ul className="space-y-3 font-lato text-rarity-ink text-sm">
+                                        <li className="flex items-center gap-3">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-rarity-ink/30" /> Licensed Esthetician (CO)
+                                        </li>
+                                        <li className="flex items-center gap-3">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-rarity-ink/30" /> 3x Certified Master Lash Artist
+                                        </li>
+                                        <li className="flex items-center gap-3">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-rarity-ink/30" /> Borboleta Volume Certified
+                                        </li>
+                                    </ul>
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+
+                {/* Decorative Background Elements */}
+                <div className="absolute bottom-10 right-10 text-[10px] uppercase tracking-[0.4em] text-rarity-ink/20 font-bold rotate-90 origin-bottom-right">
+                    Rarity Aesthetics © 2024
+                </div>
+            </div>
+        </div>
+    )
+}
+
+const UserIcon = ({ className }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+        <circle cx="12" cy="7" r="4" />
+    </svg>
+)
+
+export default About
