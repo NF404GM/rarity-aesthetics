@@ -56,7 +56,7 @@ const ServiceSection = ({ section, index }) => {
     return (
         <section
             id={section.id}
-            className="sticky top-0 min-h-screen flex flex-col pt-4 lg:pt-8 transition-all duration-500 ease-out"
+            className="relative lg:sticky lg:top-0 min-h-auto lg:min-h-screen flex flex-col pt-4 lg:pt-8 transition-all duration-500 ease-out"
             style={{ zIndex: index + 10 }}
         >
             <div className="bg-rarity-cream rounded-t-[2.5rem] md:rounded-t-[3.5rem] shadow-[0_-25px_50px_-12px_rgba(0,0,0,0.5)] flex-grow border-t border-white/20 relative overflow-hidden mx-2 md:mx-6">
